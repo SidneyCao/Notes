@@ -1,3 +1,3 @@
 # 一、平均负载  
-![Alt text](https://github.com/weiman152/StarsView/blob/master/ScreenShots/1.png) 
+![uptime](https://github.com/SidneyCao/Notes/blob/main/img/uptime.png) 
 1234
