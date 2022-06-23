@@ -1,2 +1,2 @@
 # 一、平均负载  
-![uptime]:(raw.githubusercontent.com/SidneyCao/Notes/main/img/uptime.png)  
+![uptime]:(https://github.com/SidneyCao/Notes/blob/main/img/uptime.png)  
