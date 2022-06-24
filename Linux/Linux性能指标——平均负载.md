@@ -97,13 +97,13 @@ stress: info: [15403] dispatching hogs: 0 cpu, 1 io, 0 vm, 0 hdd
 
 # 三、 实战分析流程  
 实战中，当遇到平均负载升高的突发情况，一般会使用top命令来更直观地进行分析。  
-top命令进入界面后，按1可以看到单核CPU的各项指标。
+top命令进入界面后，按1可以看到单核CPU的各项指标。  
 <br> 
 ![1-top](https://github.com/SidneyCao/Notes/blob/main/img/1-top.png)  
 当然也有很多指标是需要从mpstat中才能看出的，比如top中的`%wait`和mpstat的`%iowait`就不是一个东西，这个后续会再详细展开。  
 <br>
 <br>
-htop能更为清晰的展示出各类指标，使用F2打开所有显示，再通过F6进行排序，高占用的进程会被标记为高亮的R或者D。
+htop能更为清晰的展示出各类指标，使用F2打开所有显示，再通过F6进行排序，高占用的进程会被标记为高亮的R或者D。  
 <br> 
 ![1-htop](https://github.com/SidneyCao/Notes/blob/main/img/1-htop.png)  
 <br>
