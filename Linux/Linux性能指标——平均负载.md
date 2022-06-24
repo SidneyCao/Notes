@@ -2,7 +2,7 @@
 ## 1. 概念    
 uptime命令返回的结果中，后三个数字表示系统1分钟，5分钟，15分钟内的平均负载。  
 ```
-#uptime
+uptime
 15:07:36 up 8 days, 25 min,  1 user,  load average: 0.00, 0.01, 0.05
 ```
 平均负载是指系统在一个特定时间内，处于`可运行状态`和`不可中断状态`的平均进程数（实际上使用的是统计学中的某种算法）
@@ -20,7 +20,7 @@ uptime命令返回的结果中，后三个数字表示系统1分钟，5分钟，
   
 首先确认下系统的cpu数量，这里使用的是一台2C的机器。 
 ```
-#cat /proc/cpuinfo | grep processor | wc -l
+cat /proc/cpuinfo | grep processor | wc -l
 2
 ```
 此时如果系统的平均负载为1，则表示有CPU有50%的空闲；  
@@ -34,19 +34,28 @@ uptime命令返回的结果中，后三个数字表示系统1分钟，5分钟，
 ## 1. 工具  
 CentOS上安装所需的工具，stress是Linux平台上的一款压力测试软件，用来模拟各项指标升高的场景；sysstat包含一系列监控和分析系统性能的工具。  
 ```
-#yum -y install stress sysstat
+yum -y install stress sysstat
 ```
 ## 2. CPU密集型进程  
 使用stress模拟单个CPU使用率100%的场景  
 ```
-#stress -c 1 --timeout 600
+# -c 1 表示单个CPU 100%
+# --timeout 表示运行该时间之后退出
+stress -c 1 --timeout 600
 stress: info: [12007] dispatching hogs: 1 cpu, 0 io, 0 vm, 0 hdd
 ```
 查看uptime，会发现平均负载逐渐上升到1  
 ```
-#watch -d uptime  
+# -d 表示高亮变化部分
+watch -d uptime  
 ```
 ![uptime1](https://github.com/SidneyCao/Notes/blob/main/img/uptime1.png)
+运行mpstat查看CPU使用情况，mpstat是sysstat的一个组件，用于实时查看多核CPU的指标。
+```
+# -P ALL 表示输出所有CPU指标
+# 5 表示每隔5秒输出一组数据
+mpstat -P ALL 5
+```
 
 
 
