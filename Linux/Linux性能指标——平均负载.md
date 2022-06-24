@@ -74,7 +74,7 @@ pidstat  -u 5
 ## 3. I/O密集型进程
 使用stress模拟一个I/O密集型进程。  
 ```
-# -i 表示模拟单个CPU I/O 100%
+# -i 表示模拟I/O 100%的情况
 stress -i 1 --timeout 600
 stress: info: [15403] dispatching hogs: 0 cpu, 1 io, 0 vm, 0 hdd
 ```
