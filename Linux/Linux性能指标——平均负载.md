@@ -37,7 +37,16 @@ CentOS上安装所需的工具，stress是Linux平台上的一款压力测试软
 #yum -y install stress sysstat
 ```
 ## 2. CPU密集型进程  
-
+使用stress模拟单个CPU使用率100%的场景  
+```
+#stress -c 1 --timeout 600
+stress: info: [12007] dispatching hogs: 1 cpu, 0 io, 0 vm, 0 hdd
+```
+查看uptime，会发现平均负载逐渐上升到1  
+```
+#watch -d uptime  
+```
+![uptime1](https://github.com/SidneyCao/Notes/blob/main/img/uptime1.png)
 
 
 
