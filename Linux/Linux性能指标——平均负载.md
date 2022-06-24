@@ -39,7 +39,7 @@ yum -y install stress sysstat
 ## 2. CPU密集型进程  
 使用stress模拟单个CPU使用率100%的场景  
 ```
-# -c 1 表示单个CPU 100%
+# -c 1 表示模拟单个CPU使用率 100%
 # --timeout 表示运行该时间之后退出
 stress -c 1 --timeout 600
 stress: info: [12007] dispatching hogs: 1 cpu, 0 io, 0 vm, 0 hdd
@@ -58,7 +58,7 @@ watch -d uptime
 # 5 表示每隔5秒输出一组数据
 mpstat -P ALL 5
 ```
-可以看到有一个CPU的%usr接近100%，而%iowait几乎为0%，说明平均负载的升高正是由CPU使用率引起的。  
+可以看到有一个CPU的`%usr`接近100%，而`%iowait`几乎为0%，说明平均负载的升高正是由CPU使用率引起的。  
 ![1-mpstat](https://github.com/SidneyCao/Notes/blob/main/img/1-mpstat.png)  
 <br>
 <br>
@@ -71,7 +71,23 @@ pidstat  -u 5
 可以看到正是stress这个进程占用了大量的CPU。 
 ![1-pidstat](https://github.com/SidneyCao/Notes/blob/main/img/1-pidstat.png)  
 
-
+## 3. I/O密集型进程
+同时使用stress模拟一个I/O密集型进程。  
+```
+# -i 表示模拟单个CPU I/O 100%
+stress -i 1 --timeout 600
+stress: info: [15403] dispatching hogs: 0 cpu, 1 io, 0 vm, 0 hdd
+```
+查看uptime，发现平均负载逐渐上升到1  
+![1-uptime1](https://github.com/SidneyCao/Notes/blob/main/img/1-uptime1.png)  
+<br>
+<br>
+再查看mpstat，发现两个CPU的`%iowait`都有所上升，同时`%sys`也同步上升，最终导致平均负载上升  
+![1-mpstat1](https://github.com/SidneyCao/Notes/blob/main/img/1-mpstat1.png)
+<br>
+<br>
+最后再查看下pidstat，确认stress进程状态  
+![1-pidstat1](https://github.com/SidneyCao/Notes/blob/main/img/1-pidstat1.png)
 
 
 
