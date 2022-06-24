@@ -58,7 +58,8 @@ watch -d uptime
 # 5 表示每隔5秒输出一组数据
 mpstat -P ALL 5
 ```
-可以看到有一个CPU的`%usr`接近100%，而`%iowait`几乎为0%，说明平均负载的升高正是由CPU使用率引起的。  
+可以看到有一个CPU的`%usr`接近100%，而`%iowait`几乎为0%，说明平均负载的升高正是由CPU使用率引起的。
+<br>  
 ![1-mpstat](https://github.com/SidneyCao/Notes/blob/main/img/1-mpstat.png)  
 <br>
 <br>
@@ -68,7 +69,8 @@ mpstat -P ALL 5
 # 5 表示每5秒输出一组数据
 pidstat  -u 5
 ```
-可以看到正是stress这个进程占用了大量的CPU。 
+可以看到正是stress这个进程占用了大量的CPU。
+<br>  
 ![1-pidstat](https://github.com/SidneyCao/Notes/blob/main/img/1-pidstat.png)  
 
 ## 3. I/O密集型进程
@@ -78,26 +80,31 @@ pidstat  -u 5
 stress -i 1 --timeout 600
 stress: info: [15403] dispatching hogs: 0 cpu, 1 io, 0 vm, 0 hdd
 ```
-查看uptime，发现平均负载逐渐上升到1  
+查看uptime，发现平均负载逐渐上升到1
+<br>   
 ![1-uptime1](https://github.com/SidneyCao/Notes/blob/main/img/1-uptime1.png)  
 <br>
 <br>
 再查看mpstat，发现两个CPU的`%iowait`都有所上升，`%sys`也同步上升，最终导致平均负载上升  
+<br> 
 ![1-mpstat1](https://github.com/SidneyCao/Notes/blob/main/img/1-mpstat1.png)
 <br>
 <br>
 最后再查看下pidstat，确认stress进程状态  
+<br> 
 ![1-pidstat1](https://github.com/SidneyCao/Notes/blob/main/img/1-pidstat1.png)
 <br>
 
 # 三、 实战分析流程  
 实战中，当遇到平均负载升高的突发情况，一般会使用top命令来更直观地进行分析。  
 top命令进入界面后，按1可以看到单核CPU的各项指标。
+<br> 
 ![1-top](https://github.com/SidneyCao/Notes/blob/main/img/1-top.png)  
 当然也有很多指标是需要从mpstat中才能看出的，比如top中的`%wait`和mpstat的`%iowait`就不是一个东西，这个后续会再详细展开。  
 <br>
 <br>
 htop能更为清晰的展示出各类指标，使用F2打开所有显示，再通过F6进行排序，高占用的进程会被标记为高亮的R或者D。
+<br> 
 ![1-htop](https://github.com/SidneyCao/Notes/blob/main/img/1-htop.png)  
 <br>
 <br>
