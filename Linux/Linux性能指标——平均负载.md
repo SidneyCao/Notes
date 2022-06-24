@@ -49,13 +49,24 @@ stress: info: [12007] dispatching hogs: 1 cpu, 0 io, 0 vm, 0 hdd
 # -d 表示高亮变化部分
 watch -d uptime  
 ```
-![uptime1](https://github.com/SidneyCao/Notes/blob/main/img/uptime1.png)
+![1-uptime](https://github.com/SidneyCao/Notes/blob/main/img/1-uptime.png)  
 运行mpstat查看CPU使用情况，mpstat是sysstat的一个组件，用于实时查看多核CPU的指标。
 ```
 # -P ALL 表示输出所有CPU指标
 # 5 表示每隔5秒输出一组数据
 mpstat -P ALL 5
 ```
+![1-mpstat](https://github.com/SidneyCao/Notes/blob/main/img/1-mpstat.png)  
+可以看到有一个CPU的%usr接近100%，而%iowait几乎为0%，说明平均负载的升高正是由CPU使用率引起的。  
+再运行pidstat来查看是由哪个进程占用了CPU  
+```
+# -u 表示CPU指标
+# 5 表示每5秒输出一组数据
+pidstat  -u 5
+```
+![1-pidstat](https://github.com/SidneyCao/Notes/blob/main/img/1-pidstat.png)  
+可以看到CPU正是被stress这个进程所占用的。  
+
 
 
 
