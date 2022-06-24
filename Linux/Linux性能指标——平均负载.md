@@ -82,7 +82,7 @@ stress: info: [15403] dispatching hogs: 0 cpu, 1 io, 0 vm, 0 hdd
 ![1-uptime1](https://github.com/SidneyCao/Notes/blob/main/img/1-uptime1.png)  
 <br>
 <br>
-再查看mpstat，发现两个CPU的`%iowait`都有所上升，同时`%sys`也同步上升，最终导致平均负载上升  
+再查看mpstat，发现两个CPU的`%iowait`都有所上升，`%sys`也同步上升，最终导致平均负载上升  
 ![1-mpstat1](https://github.com/SidneyCao/Notes/blob/main/img/1-mpstat1.png)
 <br>
 <br>
