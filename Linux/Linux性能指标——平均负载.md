@@ -32,7 +32,7 @@ cat /proc/cpuinfo | grep processor | wc -l
 
 # 二、 模拟和测试
 ## 1. 工具  
-CentOS上安装所需的工具，stress是Linux平台上的一款压力测试软件，用来模拟各项指标升高的场景；sysstat包含一系列监控和分析系统性能的工具。  
+在CentOS上安装所需的工具，stress是Linux平台上的一款压力测试软件，用来模拟各项指标升高的场景；sysstat包含一系列监控和分析系统性能的工具。  
 ```
 yum -y install stress sysstat
 ```
@@ -72,7 +72,7 @@ pidstat  -u 5
 ![1-pidstat](https://github.com/SidneyCao/Notes/blob/main/img/1-pidstat.png)  
 
 ## 3. I/O密集型进程
-同时使用stress模拟一个I/O密集型进程。  
+使用stress模拟一个I/O密集型进程。  
 ```
 # -i 表示模拟单个CPU I/O 100%
 stress -i 1 --timeout 600
@@ -91,7 +91,7 @@ stress: info: [15403] dispatching hogs: 0 cpu, 1 io, 0 vm, 0 hdd
 <br>
 
 # 三、 实战分析流程  
-实战中，当遇到平均负载升高的突发情况，一般会使用top命令来更直观地进行分析，
+实战中，当遇到平均负载升高的突发情况，一般会使用top命令来更直观地进行分析。  
 top命令进入界面后，按1可以看到单核CPU的各项指标。
 ![1-top](https://github.com/SidneyCao/Notes/blob/main/img/1-top.png)  
 当然也有很多指标是需要从mpstat中才能看出的，比如top中的`%wait`和mpstat的`%iowait`就不是一个东西，这个后续会再详细展开。  
@@ -99,7 +99,6 @@ top命令进入界面后，按1可以看到单核CPU的各项指标。
 <br>
 htop能更为清晰的展示出各类指标，使用F2打开所有显示，再通过F6进行排序，高占用的进程会被标记为高亮的R或者D。
 ![1-htop](https://github.com/SidneyCao/Notes/blob/main/img/1-htop.png)  
-<br>
 <br>
 <br>
 世界上没有万能的工具，还要从各个维度和各个层面出发，再结合实际情况和历史经验来分析判断问题。
