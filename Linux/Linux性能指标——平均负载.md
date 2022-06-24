@@ -52,7 +52,6 @@ watch -d uptime
 ![1-uptime](https://github.com/SidneyCao/Notes/blob/main/img/1-uptime.png)  
 <br>
 <br>
-<br> 
 运行mpstat查看CPU使用情况，mpstat是sysstat的一个组件，用于实时查看多核CPU的指标。  
 可以看到有一个CPU的%usr接近100%，而%iowait几乎为0%，说明平均负载的升高正是由CPU使用率引起的。  
 ```
@@ -63,7 +62,6 @@ mpstat -P ALL 5
 ![1-mpstat](https://github.com/SidneyCao/Notes/blob/main/img/1-mpstat.png)  
 <br>
 <br>
-<br>    
 再运行pidstat来查看是由哪个进程占用了CPU  
 可以看到正是stress这个进程所占用了大量的CPU。  
 ```
