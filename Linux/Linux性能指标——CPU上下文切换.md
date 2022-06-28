@@ -19,6 +19,7 @@ CPU上下文切换可以分为几种不同的场景：
 进程可以在用户态中运行，也可以在内核态中运行。
 <br>
 ![2-cs-w10](https://github.com/SidneyCao/Notes/blob/main/img/2-cs.png)  
+<img src="https://github.com/SidneyCao/Notes/blob/main/img/2-cs.png" width = "80%" />  
 当进程需要执行高特权的操作（比如读写文件）时，会被系统调用到内核态，此时就会发生CPU上下文切换。
 - CPU寄存器保存用户态的指令位置
 - CPU寄存器更新为内核态指令的新位置，再切换到内核空间运行
