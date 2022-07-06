@@ -35,7 +35,7 @@ CPU上下文切换可以分为几种不同的场景：
 ## 2. 性能问题  
 保存上下文和恢复上下文也会占用CPU时间，虽然这个时间很短，但当有大量上下文切换发生时，消耗也是相当可观的。  
 <br>
-<img src="https://github.com/SidneyCao/Notes/blob/main/img/2-pcs.png" width = "50%">
+<img src="https://github.com/SidneyCao/Notes/blob/main/img/2-pcs.png" width = "70%">
 <br>
 
 ## 3. 何时进行上下文切换
